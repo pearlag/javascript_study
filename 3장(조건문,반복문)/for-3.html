@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>반복문-3(1차원 배열 이용)</title>
+</head>
+<body>
+  <script>
+
+    //string 배열 선언과 동시에 초기화했음
+    //배열은 index로 관리해서, 수정할때도 index를 사용해야 함/
+    var data = ["서울", "인천", "대구", "부산", "전주", "제주", "울산", "괴산"];
+
+    //document.write(data[0]);
+
+    //배열명.length는 배열의 길이를 구해준다.
+    for( var i = 0; i < data.length; i++){
+      document.write(data[i] + "<br />");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>반복문-do while</title>
+</head>
+<body>
+  <script>
+    // 1 ~ 100까지 합계를 구해라
+    var sum = 0; // 누적값
+    var i = 1;
+
+    // do- while문은 while문의 파생된 것으로, 초기값, 조건식, 증감식이 따로 떨어져 있으므로 
+    // for문에 비하여 반복횟수를 가지고 루핑을 한다면 오히려 가독성이 떨어진다.
+    // do-while문은 사용자에게 먼저 의사를 물어보고, 그 값에 따라 루핑을 할지 말지 결정한다.
+    // 최소 한 번은 실행한다.(조건식이 뒤에 있으니!)
+    do{
+      sum += i; // sum = sum + i // 복합대입연산자를 이용하여 값을 누적하고 있다.
+      document.write(sum + ", " + i + "<br />");
+      i++; 
+    }while(i<=100)
+    document.write("1~ " + (i-1) + "까지의 합" + sum);
+
+  </script>
+</body>
+</html>
