@@ -1,10 +1,10 @@
 # javascript_study
 
 -자바스크립트+jQuery 기초부터 실무까지 : 기초 Part.1
-https://cdn.inflearn.com/public/courses/327742/cover/6343b397-9bd4-424a-9be9-090a1ca1330e/part1_thumnail.png
+![image](https://user-images.githubusercontent.com/74699797/228441531-e3b754ae-1c97-414f-b2f2-52a3a380df5e.png)
 수강 기간 : 2023.03.17 ~ 2023.03.29 (완강)
 
 
 - 제대로 파는 자바스크립트(JavaScript) - by 얄코
-https://cdn.inflearn.com/public/courses/329755/cover/6fc3f9be-8cc1-42a3-8b6a-b34d91352df2/JavaScript--IFL.png
+![image](https://user-images.githubusercontent.com/74699797/228441570-912c2217-ece9-4b41-9715-233944016e51.png)
 수강 기간 : 2023. 04.10 - 2023.04.29
