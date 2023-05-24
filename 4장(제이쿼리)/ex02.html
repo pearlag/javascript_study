@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>지구본 움직이기</title>
+  <script src="/libs/jquery-1.11.1.min.js"></script>
+</head>
+<style>
+  #panel{width:600px;height:300px;border:1px solid #999;position: relative;}
+  #bar{position: absolute;left:50px;top:190px;width:500px;height:15px;background-color: #F33;z-index: 1;}
+  #earth{width:100px;position: absolute;left:50px;top:100px;}
+  #btn{text-align: center;width:600px;}
+  #btnOn{font-size: 20px;font-weight: bold;}
+</style>
+<body>
+  <div id="panel">
+    <div id="bar"></div>
+    <img src="../earth.png" alt="" id="earth">
+  </div>
+  <div id="btn"><button id="btnOn">지구본 움직이기</button></div>
+  <script>
+    $(document).ready(function(){ // 콜백함수
+      var $earth = $("#earth");
+
+      $("#btnOn").click(function(){ // 콜백함수
+        $earth.animate({
+          left : "480px"
+        }, 2000);
+      });
+    });
+  </script>
+</body>
+</html>

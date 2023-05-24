@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모두 선택시 하위 input 체크</title>
+  <script src="/libs/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+  <div>
+    <input type="checkbox" name="chkDate" id="chkDateAll"/><label for="chkDateAll">모두 선택</label>
+  </div>
+  <div class="chkList">
+    <input type="checkbox" name="chkDate" id="chk01" /><label for="chk01">월</label>
+    <input type="checkbox" name="chkDate" id="chk02" /><label for="chk02">화</label>
+    <input type="checkbox" name="chkDate" id="chk03" /><label for="chk03">수</label>
+    <input type="checkbox" name="chkDate" id="chk04" /><label for="chk04">목</label>
+    <input type="checkbox" name="chkDate" id="chk05" /><label for="chk05">금</label>
+    <input type="checkbox" name="chkDate" id="chk06" /><label for="chk06">토</label>
+    <input type="checkbox" name="chkDate" id="chk07" /><label for="chk07">일</label>
+  </div>
+</body>
+</html>
+<script>
+  $(function(){
+
+    $('#chkDateAll').click(function(){  // '모두선택'을 check할 때마다,
+      $('.chkList input').prop('checked', this.checked); // .chkList input의 checked 속성이 toggle된다.
+    });
+
+    $('.chkList input').click(function(){  // .chkList input을 check할 때,
+      if($('.chkList input:checked').length==$('.chkList input').length){ // 체크된 .chkList input와 .chkList input의 수가 같으면
+        $('#chkDateAll').prop('checked',true); // '모두선택'이 checked 된다.
+      }else{ // 그 외에는,
+        $('#chkDateAll').prop('checked',false); // '모두선택'이 unchecked 된다.
+      }
+    });
+
+  });
+</script>

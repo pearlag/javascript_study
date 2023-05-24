@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>함수_이벤트-1</title>
+</head>
+<style>
+  #item img{width: 800px;}
+  #item{position: relative;width:1000px;margin: 150px auto;}
+  button{background-color: #fcadc0; color: #000;border:dashed 3px #000;font-size: 0.9em;padding:10px;letter-spacing: -1px;cursor: pointer;}
+  .over{position: absolute ;left: 30px;bottom: 30px;}
+  .detail{width:800px;text-align: center;line-height: 1.8;display: none;}
+</style>
+<script>
+function showDetail(){
+  document.querySelector("#desc").style.display = "block";
+  document.querySelector("#open").style.display = "none";
+}
+
+function hideDetail(){
+  document.querySelector("#desc").style.display = "none";
+  document.querySelector("#open").style.display = "block";
+}
+</script>
+<body>
+  <div id="item">
+    <img src="./images/04.jpg" alt="로제" />
+    <button class="over" id="open" onclick="showDetail()">상세 설명 보기</button>
+    <div class="detail" id="desc">
+      <h3>로제 Rose</h3>
+      <p>로제는 대한민국과 뉴질랜드의 가수, 댄서이자 걸그룹 BLACKPINK의 멤버이다. 1997년 뉴질랜드 오클랜드에서 태어났고 만 7살 때부터 호주 빅토리아주 멜버른에서 자랐으며, 대한민국과 뉴질랜드의 복수국적을 가지고 있다.블랙핑크의 리드댄서이다. 춤선이 매우 부드럽고 예뻐서 누구보다 눈에 잘 띄고 무대 매너도 좋다.</p>
+      <button class="close" onclick="hideDetail()">상세 설명 닫기</button>
+    </div>
+  </div>
+</body>
+</html>

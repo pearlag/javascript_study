@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이벤트2-jq</title>
+  <script src="/libs/jquery-1.11.1.min.js"></script>
+  <script>
+    //ready() load() 차이점
+    //ready() : 이벤트는 클라이언트가 사이트를 방문할 때 요청한 HTML문서. 객체의 로딩이 끝나면 이벤트를 실행한다.
+    //load() : 외부 리소스의 로딩이 끝나면 이벤트를 실행한다.
+    $(function(){
+      $(document).ready(function(){
+        var w = $(".img").width();
+        console.log("ready() : " + w);
+      });
+
+      $(window).load(function(){
+        var w = $(".img").width();
+        console.log("load() : " + w);
+      });
+
+    });
+  </script>
+</head>
+<body>
+  <p><img src="./images/01.png" alt=""  class="img" width="1000" /></p>
+</body>
+</html>

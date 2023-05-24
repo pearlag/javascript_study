@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>지구본 움직이기</title>
+  <script src="/libs/jquery-1.11.1.min.js"></script>
+  <style>
+    body{font-size: 15px;}
+    #panel{position: relative;width: 600px;height:500px;border:1px solid #999;}
+    #earth{position:absolute;width:200px;left:50px;top:120px;}
+    #nav{text-align: center;width:600px;}
+  </style>
+</head>
+<body>
+  <div>
+    <div id="panel"><img id="earth" src="./images/earth.png" alt=""></div>
+  </div>
+  <div id="nav">
+    <label for="">x값 입력: </label>
+    <input id="txtX" type="text">
+    <br />
+    <label for="">y값 입력: </label>
+    <input id="txtY" type="text">
+    <br />
+    <button id="btnStart">지구본 움직이기</button>
+  </div>
+</body>
+</html>
+<script>
+  var $earth = null;
+
+  $(document).ready(function(){
+    ini();
+    event();
+
+  });
+
+  //전역변수 초기화
+  function ini(){
+    $earth = $('#earth');
+  }
+  
+  //이벤트와 관련된 내용 작성
+  function event(){
+    $('#btnStart').click(function(){
+      var x = parseInt($("#txtX").val());
+      var y = parseInt($("#txtY").val());
+      moveEarth(x, y);
+    });
+  }
+
+  function moveEarth(){
+    if((x >= 0 && x < 500) && (y >= 0 && y <= 300)){
+        $earth.css({
+          left : x,
+          top : y
+        })
+      }else{
+        alert("입력된 값이 범위를 벗어났음");
+      }
+  }
+    
+</script>

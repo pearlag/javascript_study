@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>age</title>
+</head>
+<style>
+  body{
+  text-align: center;
+  font-size: 30px;
+}
+.btn{
+  margin-top: 50px;
+  font-weight: 400;
+  color:#fff;
+  background-color: #007bff;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid blue;
+  padding: 5px;
+  font-size: 30px;
+}
+.btn:hover{
+  color: #fff;
+  background-color: aquamarine;
+  border-color: aqua;
+}
+
+.show{
+  margin-top: 50px;
+  padding: 20px 30px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+</style>
+<body>
+  <button class="btn" onclick="calc()">나이 계산</button>
+  <div id="result" class="show">(결과값 표시)</div>
+  
+  <script>
+    function calc(){
+      var currentYear = 2023; // 올해 년도를 변수에 저장
+      var birthYear = prompt("태어난 년도를 입력하세요.","YYYY"); // 사용자로부터 입력받은 값을 변수에 담음
+      var age = 0; // age 변ㅇㅇ수 값을 0으로 초기화
+      age = currentYear - birthYear + 1; // 실제 나이를 구한 값을 age에 재할당
+      document.querySelector("#result").innerHTML = "당신의 나이는 " + age + "세입니다." // #result인 요소를 가져와서, 해당 값으로 대체해서 화면에 출력한다.
+    }
+  </script>
+</body>
+</html> 

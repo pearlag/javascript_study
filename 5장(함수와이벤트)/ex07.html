@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>함수_갤러리</title>
+</head>
+<style>
+  .image-container{position: relative;}
+  .image-container img{position:absolute;top:0;left:0;width: 300px;height:180px;}
+</style>
+<script src="/libs/jquery-1.11.1.min.js"></script>
+<script>
+  $(document).ready(function(){
+      init();
+      initEvent();g
+  });
+
+  //전역변수 선언
+  var $images = null;
+
+  function init(){
+     //배열로 이미지들을 받고 있다.
+    $images = $("#container1 img");
+  }
+
+   function initEvent(){
+    $("#btnStart").click(function(){
+      showImage();
+    });
+   }
+
+  function showImage(){
+    //이미지의 갯수 구하기
+    var length = $images.length;
+
+    //이미지 나열하기
+    for(var i=0; i<length; i++){
+      //eq 함수를 이용하여 인덱스에 맞는 이미지를 저장하고 있다.
+      var $img = $images.eq(i);
+      //위치값 구하기
+      var x = 100 + ((i % 3) * 300);
+      var y = 100 + (parseInt(i/3) * 180);
+
+      //이미지의 위치를 설정한다.
+      $img.css({
+        left : x, 
+        top: y
+      });
+    }
+  }
+</script>
+<body>
+  <button id="btnStart">START</button>
+  <div class="image-container" id="container1">
+    <img src="./images/01.png" alt="">
+    <img src="./images/02.jpg" alt="">
+    <img src="./images/03.png" alt="">
+    <img src="./images/04.jpg" alt="">
+  </div>
+</body>
+</html>
