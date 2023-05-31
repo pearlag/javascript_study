@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>콜백함수-4</title>
+  <script src="/libs/jquery-1.11.1.min.js"></script>
+  <script>
+    $(function(){
+      // 함수 시작과 동시에 호출
+      checkCount();
+    });
+
+    //일반함수를 이용한 풀이
+    function checkCount(){
+      var count = 0;
+      $("#btnStart").click(function(){
+        count++;
+        if(count >= 5){
+          alert("완료되었습니다.");
+        }
+      });
+    };
+  </script>
+</head>
+<body>
+  <button id="btnStart">시이작</button>
+</body>
+</html>

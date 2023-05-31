@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>클로저 함수-1</title>
+  <script>
+    function add(){
+      var cnt = 0;
+      cnt++;
+      return cnt;
+    }
+    document.write("1st cnt :" + add() + "<br />")
+    document.write("2st cnt :" + add() + "<br />")
+    document.write("3st cnt :" + add() + "<br />")
+    document.write("4st cnt :" + add() + "<br />")
+    document.write("5st cnt :" + add() + "<br />")
+
+    function CC(){
+      var cnt = 0;
+      function add(){
+        var cnt = 0;
+        function add(){
+          cnt++; //외부함수의 지역변수 잉용   
+          return cnt;
+        }
+        return add;
+      }
+    }
+    var counter = CC();// 함수리터럴
+    document.write("1 cnt = " + counter() + "" +"<br />")
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
