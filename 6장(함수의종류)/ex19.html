@@ -41,35 +41,28 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>클로저 함수-1</title>
+  <title>클로저 함수-2</title>
+  <script src="/libs/jquery-1.11.1.min.js"></script>
   <script>
-    function add(){
-      var cnt = 0;
-      cnt++;
-      return cnt;
-    }
-    document.write("1st cnt :" + add() + "<br />") 
-    document.write("2st cnt :" + add() + "<br />")
-    document.write("3st cnt :" + add() + "<br />")
-    document.write("4st cnt :" + add() + "<br />")
-    document.write("5st cnt :" + add() + "<br />")
+    $(function(){
+      $("#btnStart").click(function(){
+        start();
+        document.write("시작");
+      });
 
-    function CC(){
-      var cnt = 0;
-      function add(){
-        var cnt = 0;
-        function add(){
-          cnt++; //외부함수의 지역변수 잉용   
-          return cnt;
-        }
-        return add;
+      function start(){
+        var cnt = 0; 
+        //클로저 함수
+        setInterval(function(){
+          cnt++; // 외부함수의 지역변수 사용(메모리에서 제거X)
+          document.write(cnt);
+
+        }, 2000);
       }
-    }
-    var counter = CC();// 함수리터럴
-    document.write("1 cnt = " + counter() + "" +"<br />")
+    });
   </script>
 </head>
 <body>
-  
+  <button id="btnStart">시작</button>
 </body>
 </html>
