@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>지구본 게임</title>
+  <script src="/libs/jquery-1.11.1.min.js"></script>
+</head>
+<style>
+  .container{width: 600px;height:500px;position: relative;border: 3px solid red;margin:0 auto;}
+
+  #earth{width:100px;margin:150px 0 0 250px;cursor:pointer;}
+  #score, #text{font-size: 30px;font-weight: bold;text-align: center;}
+
+</style>
+<body>
+<div id="text">현재 점수 : <span id="score">0</span></div>
+<div class="container"><img src="../earth.png" alt="" id="earth"></div>
+<script>
+  // 지구 click시 점수 변함. 단, setTimeout()사용
+  // 5초동안만 허락.
+  $(function(){
+    //점수 저장 변수
+    var cnt = 0;
+    //점수 출력
+    var $score = $("#score");
+    //플래그 변수(조건이 되면 코드 실행 / 안되면 코드 중지)
+    var play = true;
+
+    $("#earth").click(function(){
+      //점수 증가
+      if(play == true){
+        cnt++;
+        $score.html(cnt);
+      }
+    });
+
+    //게임을 5초 후에 timeout
+    setTimeout(function(){
+      play = false;
+      alert("게임이 종료되었습니다.")
+    }, 5000);
+
+  });
+</script>
+</body>
+</html>
