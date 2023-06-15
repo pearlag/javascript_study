@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>국기 캐라셀</title>
+  <script src="/libs/jquery-1.11.1.min.js"></script>
+</head>
+<style>
+*{margin:0; padding:0;}
+.banner{width:400px;height:250px;position:absolute;border:2px solid #ccc;}
+#banner1{top:150px;left:150px;}
+</style>
+<body>
+<div>
+  <img src="./canada.png" class="banner" id="banner1">
+</div>
+<script>
+$(function(){
+  //배열로 국기를 저장한다.
+  var imgList =["canada.png", "french.png", "uk.png", "united.png"];
+  //인덱스 선언과 동시 초기화
+  var index = 0;
+  //이미지 노드 찾아오기
+  var $banner = $(".banner");
+  //1초마다 롤링
+  setInterval(function(){
+    // 다음 이미지가 나오게 하기 위해 인덱스 증가
+    index++;
+    if(index >= imgList.length){ //인덱스가 이미지 배열의 길이보다 같거나 크면 인덱스를 0으로 초기화
+      index = 0;
+    }
+    //다음 이미지 이름 구하기
+    var imgName = imgList[index];
+    //banner의 속성값 변경
+    $banner.attr("src", "./" + imgName);
+  }, 1000);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>물고기 게임</title>
+  <script src="/libs/jquery-1.11.1.min.js"></script>
+</head>
+<style>
+#panel{width:1000px;height:300px;border:2px solid #999;position: relative;}
+#bar{position:absolute;left:50px;top:190px;width:900px;height:20px;background-color: red;}
+#fish{position: absolute;left:50px;top:20px;}
+#nav{text-align: center;width:1000px;margin-top: 20px;}
+button{font-size: 20px;padding:5px 20px;font-weight: bold;}
+</style>
+<body>
+<div>
+  <div id="panel">
+    <div id="bar"></div>
+    <img id="fish" src="./fish.jfif" alt="fish">
+  </div>
+  <div id="nav">
+    <button id="btnStart">시작</button>
+    <button id="btnStop">멈춤</button>
+  </div>
+</div>
+<script>
+var $fish = null;
+var step = 50; // 이동할 거리
+var timerID = 0;
+
+$(function(){
+  // 필요한 것 : 시작, 멈춤, 이동하는 위치값
+  init();
+  initEvent();
+});
+
+//요소 초기화
+function init(){
+  $fish = $("#fish") // 물고기 노드 찾아오기
+}
+//이벤트 등록
+function initEvent(){
+  //물고기 움직이는 이벤트 등록
+  $("#btnStart").click(function(){
+    start();
+  });
+  //물고기 멈추는 이벤트 등록
+  $("#btnStop").click(function(){
+    stop();
+  });
+}
+//물고기 움직이기 타이머 실행
+function start(){
+  if(timerID == 0){
+    timerID = setInterval(function(){
+      //물고기 움직이기
+      move();
+    }, 100);
+  }
+}
+//물고기 멈추기
+function stop(){
+  clearInterval(timerID);
+  timerID = 0;
+  
+}
+//물고기 움직이기
+function move(){
+  // 물고기 포지션값 가져오고 다음 물고기의 위치(step = 50)를 더한다.
+  var x = $fish.position().left + step;
+
+  if(x >= 650){
+    //attr()함수는 요소의 속성값을 가져온다.
+    $fish.css("transform", "scaleX(-1)");
+    step = -50;
+  }
+
+  if(x < 80){
+    //attr()함수는 요소의 속성값을 가져온다.
+    $fish.css("transform", "scaleX(1)");
+    step = 50;
+  }
+
+  $fish.css("left", x);
+
+}
+
+/*
+0. 물고기 , 이동할 거리, 타이머아이디 초기화,  필요한 함수블럭 만들기.
+1. 우선 물고기를 찾아온다. 
+*/
+</script>
+</body>
+</html>

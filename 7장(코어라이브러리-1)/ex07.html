@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math 클래스</title>
+  <script src="/libs/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<div>
+<div id="panel">주사위 번호 :  0</div>
+</div>
+<script>
+var $info = null;
+$(function(){
+  $info = $("#panel");
+  showRandom();
+  setInterval(showRandom, 1000);
+});
+
+function showRandom(){
+  // Math.random은 실수값을 return하기에, 정수값을 return하기 위해 parseInt()를 사용함.
+  // 1에서 10 사이의 랜덤 수 출력.
+  var num = parseInt(Math.random() * 10/* 범위*/) + 1; /*시작 값*/ 
+  $info.html("주사위 번호 : " + num);
+}
+</script>
+</body>
+</html>

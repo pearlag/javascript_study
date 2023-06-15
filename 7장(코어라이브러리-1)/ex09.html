@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math 클래스를 이용한 물고기 께임</title>
+  <script src="/libs/jquery-1.11.1.min.js"></script>
+</head>
+<style>
+    #start{font-size: 20px;font-weight: bold;}
+    #scoreText{font-size: 20px;font-weight: bold;}
+    #score{font-size: 20px;font-weight: bold;color:red;}
+    #panel{width:1000px;height:500px;position: relative;border:2px solid blue;margin-top: 20px;}
+    #fish{position: absolute;left:150px;top:100px;cursor: pointer;}
+</style>
+<body>
+<div>
+  <button id="start">게임 시작</button>
+  <span id="scoreText">현재점수 : </span><span id="score">0</span>
+</div>
+<div id="panel">
+  <img src="./fish.jfif" alt="" id="fish">
+</div>
+<script>
+var cnt = 0;
+var $score = null;
+var $fish = null;
+var play = false;
+var timerID = 0;
+
+$(function(){
+  // 요소 초기화
+  init();
+  initEvent();
+
+});
+
+function init(){
+  $score = $("#score");
+  $fish = $("#fish");
+}
+
+function initEvent(){
+  //btn 누르면 게임 시작
+  $("#start").click(function(){
+    startGame();
+  });
+
+  //물고기 클릭하면 점수 증가
+  $("#fish").click(function(){
+    addScore();
+  });
+}
+
+function startGame(){
+  if(play == false){
+    // 게임 종료 여부 체크
+    checkEndGame();
+    play = true;
+    timerID = setInterval(function(){
+      //물고기 움직이기
+      moveFish();
+    }, 300);
+  }
+}
+
+//점수 증가
+function addScore(){
+  if(play == true){
+    cnt++;
+    $score.html(cnt);
+  }
+}
+
+//물고기 움직이게 하는 moveFish()
+function moveFish(){
+/*
+물고기 크기 300*186, 패널의 크기 600*400, 물고기 x이동 영역 0~300(600-300), 물고기 y이동 영역 0~314(400-186)
+*/
+
+var x = parseInt(Math.random() * 300);
+var y = parseInt(Math.random() * 314);
+
+  $fish.css({
+    left : x,
+    top : y
+  });
+}
+
+function checkEndGame(){
+  // 게임 10초 뒤에 종료되게끔 한다. 
+  setTimeout(function(){
+    play = false;
+    clearInterval(timerID);
+    alert("game is ended.");
+  }, 10000)
+}
+
+
+</script>
+</body>
+</html>
