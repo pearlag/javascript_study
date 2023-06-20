@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>String클래스-9(오른쪽 공백만 제거)</title>
+  <style>
+    body{font-style: 20px;}
+    #input{
+      width:300px;
+    }
+    #output{display: block;width:600px;height:200px;border:2px solid red;}
+  </style>
+  <script src="/libs/jquery-1.11.1.min.js"></script>
+  <script>
+    $(function(){
+      var $output = $("#output");
+      var $input = $("#input");
+
+      $("#confirm").click(function(){
+        //입력값 알아내기
+        var value = $input.val(); 
+        //오른쪽 공백 제거
+        var result = rtrim(value);
+        $output.html(result);
+      });
+    });
+
+    //뒤쪽 공백 제거 함수
+    function rtrim(str){
+      //문자열이 없는 경우
+      if(str.length <= 0){
+        return "";
+      }
+      // 뒤쪽 첫 번째 문자가 공백이 아니라면 검사할 필요가 없다.
+      var lastChar = str.charAt(str.length-1);
+      if(lastChar != " "){
+        return str;
+      }
+
+      var index;
+      //공백이 끝나는 위치 찾기
+      for(index=str.length-1; index>=0; index--){
+        //공백 문자가 아닐 때까지 찾기
+        var ch = str.charAt(index);
+        if(ch != " "){ // 공백이 아니다 = 문자를 의미.
+          index++;
+          break;
+        }
+      }
+
+      //0번째 index부터 우리가 위에서 찾았던index변수까지 문자열을 잘라내고 있다.
+      var result = str.slice(0, index);
+      return result;
+      
+    }
+  </script>
+</head>
+<body>
+  <div>
+    <input type="text" name="" id="input" />
+    <button id="confirm" type="submit">확인</button>
+    <textarea name="" id="output" cols="30" rows="10">실행결과</textarea>
+  </div>
+</body>
+</html>
