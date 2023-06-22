@@ -558,20 +558,251 @@ var name = function(){
 
 
 
+자바스크립트 코어 라이브러리
 
 
 
+타이머 함수 : 전역 객체인 window에 포함되어있다.
+setInterval() : 일정 시간마다 주기적으로 특정 구문을 실행
+var A = setInterval(func, duration);
+func: 지연 시간마다 타이머 함수에 의해 호출되는 콜백 함수
+duration: 지연 시간, 밀리초.(1000 = 1초 , 100 = 0.1초 )
+$(function(){
+     var $contents = $("#contents");
+     var cnt = 0;
+ 
+     //익명함수 풀이
+     setInterval(function(){
+       cnt++; // 값을 증가
+       $contents.text(cnt); // text()를 이용하여 div영역에 출력.
+     }, 1000); // 1초마다 반복
+ 
+     //일반함수풀이
+     function addCnt(){
+       cnt++;
+       $contents.text(cnt); // text()를 이용하여 div영역에 출력.
+     }
+     setInterval(addCnt, 1000);
+});
+setTimeout() : 일정 시간이 지난 후 특정 구문을 딱 한 번 실행
+var A = setTimeout(func, duration)
+$(function(){
+      var $contents = $("#contents");
+ 
+      //익명함수 풀이
+      //setTimeout는 duration밀리초 후에 단 한 번만 실행이 되는 함수
+      setTimeout(function(){
+        $contents.text("안녕하세요"); // text()를 이용하여 div영역에 출력.
+      }, 3000); // 1초마다 반복
+      
+ 
+      //일반함수풀이
+      function addCnt(){
+        $contents.text("안녕하세요"); // text()를 이용하여 div영역에 출력.
+      }
+      setTimeout(addCnt, 3000);
+ 
+ });
+clearInterval():실행 중인 타이머 함수를 멈추는 기능
+clearInterval(A) // A:제거할 타이머 네임.
+$(function(){
+      var $contents = $("#contents");
+      var cnt = 0;
+      var timerID = 0;
+ 
+      //익명함수 풀이
+      timerID = setInterval(function(){
+        cnt++;
+        $contents.text(cnt);
+      }, 1000); // 1초마다 반복
+ 
+      $("#stop").click(function(){
+        clearInterval(timerID);
+        console.log("멈췄습니다.");
+      });
+ 
+ 
+      //일반함수풀이
+      function addClock(){
+        timerID = setInterval(function(){
+            cnt++;
+            $contents.text(cnt);
+          }, 1000);
+      }
+   
+      addClock();
+ 
+      $("#stop").click(function(){
+        clearInterval(timerID); // setInterval함수가 반환한 타이머 ID를 전달해야 하므로 addClock()이 아니라 timerID 변수를 사용한다.
+        console.log("멈췄습니다.");
+      });
+ 
+    });
+Math 클래스
+실무에서 주로 사용되는 것 
+Math.random() // 배너, 이미지 슬라이드의 컨텐츠를 랜덤하게 보여줄 때 . 컨텐츠의 위치를 무작위로 설정할 때
+Math.ceil() // 게시판의 페이지 수를 구할 때
+Math.sin() // 이미지 갤러리 제작 시, 이미지를 곡선을 따라 나열
+프로퍼티 : PI(원주율 값)
+함수(메서드) 목록... 주로 쓰이는 것만! 다른 자바스크립트 코어 클래스와는 달리 대부분의 기능이 클래스 메서드(정적메서드)로 구현되어 있어서 인스턴스 생성 없이 바로 사용할 수 있다.
+abs() : 절대값을 반환
+ceil() : 올림값을 반환
+floor() : 숫자의 버림값을 반환
+log(): 자연로그 값을 반환
+max(): 두 수 중 큰 값을 반환
+min() 두 수 중 작은 값을 반환
+random() : 0과 1사이의 난수 값을 반환
+round() : 가장 가까운 정수로 반올림하거나 반내림한 값을 반환
+sqrt() 제곱근을 반환
+String 클래스
+문자열을 생성하는 기능을 시작으로 문자열과 관련된 유요한 기능이 있다. 
+실무 활용
+입력받은 아이디의 패스워드의 좌우 공백을 없애준다.
+게시판 제작 시, 게시물의 특정 문자열을 다른 문자열로 치환 , 혹은 삭제가 가능하다.
+`
+주요 기능
+프로퍼티 - length : 문자열 개수
+함수(메서드) 목록(자주 쓰는 것만)
+indexOf() : 스트링 인스턴스에서 특정 문자나 문자열이 처음으로 등장하는 위치의 인덱스를 반환함.
+lastIndexOf() : 뒤에서부터  ''
+charAt() : string 인스턴스에서 전달받은 인덱스에 위치한 문자를 반환한다.
+slice()
+split() : 
+concat() :
+toUpperCase() : 대문자 변환
+toLowerCase() : 소문자 변환
+replace() : 새 문자열 반환
+등등..
+핵심 내용
+문자열 만들기
+리터럴 방식 : var str = "hi";
+string클래스의 객체를 생성해 이용 var str = new String("hi") ;
+주의 사항 : 문자열 리터럴 방식 구문은  —--- 자바스크립트 해석 ----→ String클래스의 객체를 생성해서 이용하는 방식으로 변환되어 실행된다. 
+alert("hi".length); //2
+alert("hi".charAt(0)); //h
+문자열 길이 알아내기 - length()
 
+var str = "안녕하세요";
+var len = str.length; //5
+특정 위치의 문자 구하기 - charAt()
 
+var str = "안녕하세요";
+var ch = str.charAt(2); // 하
+문자(열) 위치 찾기 indexOf()
 
+var text =  "안녕하세요"
+var ch = text.indexOf("하", 0);
+특정 위치에 문자 추가
 
+slice()
+var result = 문자열.slice(start(문자열 시작 위치), end(문자열 끝 위치))
+substr()
 
+var result = 문자열.substr(start(문자열 시작 위치), length(문자열 개수))
+특정 위치의 문자를 다른 문자로 변경하기  replace()
 
+var result = 문자열.replace(searchValue(찾는 문자), newValue(대체 문자));
+특정 위치에 문자 제거  slice()메서드와 substr()메서드를 이용하여 조합한다.
+Data 클래스
+날짜 및 시간과 관련된 유용한 기능
+실무 활용
+다이어리 - 달력, 현재 시간 출력, D-day, 플레이 경과 시
+함수(메서드) 목록
+getDate() 로컬 시간을 사용하여 일(월 기준) 반환
+등등 엄청 많다.
+0 (1월,일요일) 6(토요일), 11(12월)
+Array 클래스 //배열 만들고 추가 삭제 찾기
+리스트 출력
+프로퍼티
+length : 배열의 크기(개수)를 알 수 있다.
+메서드 목록
+concat(array)  두 개의 배열을 하나의 배열로 합친다.
+push(data) 배열의 끝에 데이터를 추가 후 배열의 길이를 리턴한다.
+pop() 배열의 마지막 항목을 제거하고 , 제거된 데이터를 반환한다.
+shift() 배열의 첫 번째 데이터 제거 후 해당 값 리턴
+unshift() 배열의 맨 앞에 데이터 추가 후 배열의 길이 반환
+join() 지정한 구분자 이용 배열을 문자열로 변환 후 반환
 
+a,b,c,d,e
+arr.join(,);
+abcde
+splice ,slice, reverse, sort
+실무에선 배열 리터럴 방식을 이용한다. js 에선 내부적으로 배열 클래스 방식으로 변환되어 실행된다.
 
+1. 배열 리터럴 방식
+var arr = ["num1", "num2", "num3"];
+ 
+2. 배열 클래스 방식
+var arr = new Array("num1", "num2", "num3");
+배열 요소 개수 알아내기
 
+var arr = ["num1", "num2", "num3"];
+console.log(arr.length); // 3
+특정 위치의 배열 요소 접근하기
 
+var arr = ["num1", "num2", "num3"];
+for(var i=0; i<arr.length; i++){      //i가 0이고, i<arr의 배열 수 일 때 까지 반복하고, i가 1씩 추가된다.
+    var num = arr[i]                  // arr의 0번째 배열 요소 접근
+    document.write(num + "<br />");
+}
+배열을 문자열로 만들기
 
+var arr = 배열명.join([seperator]) // seperator 생략시 쉼표(,)가 구분자로 사용된다.
+문자열을 배열로 만들기
 
+var arr = 문자열.split(seperator)
+특정 위치에 배열 요소 추가
+push() 배열 마지막 위치에 배열 요소 추가
 
+var result = 배열.push(element, [element]);
+매개변수: 배열 마지막 위치에 추가할 배열 요소
+리턴값 : 신규 배열 요소를 추가한 배열을 리턴
+unShift() 배열 첫 번째 위치에 배열 요소 추가
 
+var result = 배열.unShift(element, [element]);
+매개변수: 배열 첫 번째 위치에 추가할 배열 요소
+리턴값 : 신규 배열 요소를 추가한 배열을 리턴
+splice() 배열 n번째 위치에 배열 요소 추가
+
+var result = 배열.splice(start, deleteCount, [element]);
+start: 추가 or 삭제할 배열 요소의 시작 위치
+deleteCount: start부터 시작하여 삭제할 배열 요소의 개수(요소 추가시에는 0)
+element: 추가 요소
+리턴값: 삭제할 배열 요소를 추가한 배열을 리턴. (요소 추가시에는 X)
+특정 위치의 배열 요소 삭제
+shift() 첫 번째 요소 삭제
+
+var result = 배열.shift();
+매개변수: 없음
+리턴값: 삭제된 배열 요소
+pop() 마지막 요소 삭제하기
+
+var result = 배열.pop();
+매개변수: 없음
+리턴값: 삭제된 배열 요소
+splice() n번째 위치의 배열 요소 삭제
+
+var result = 배열.splice(start, deleteCount, [element]);
+start: 추가 or 삭제할 배열 요소의 시작 위치
+deleteCount: start부터 시작하여 삭제할 배열 요소의 개수(요소 추가시에는 0)
+element: 추가 요소
+리턴값: 삭제할 배열 요소를 추가한 배열을 리턴. (요소 추가시에는 X)
+배열 정렬하기
+sort()
+
+var result = 배열.sort([compareFunction]);
+매개변수 : compareFunction은 정렬 순서를 정의하는 함수이다. 생략 시, 문자를 오름차순으로 정렬한다.
+리턴값: 정렬이 완료된 결과값. 정렬에 사용된 원본도 변경된다.
+문자 오름차순 정렬
+
+배열.sort(function(a, b){
+    return a - b; //음수 return
+});
+문자 내림차순 정렬
+
+배열.sort(function(a, b){
+    return b > a; 또는 b - a;
+});
+숫자 정렬하기
+
+숫자도 문자열로 처리됨.
