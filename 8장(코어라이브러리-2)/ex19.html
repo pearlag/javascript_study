@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array클래스(정렬-숫자)</title>
+  <script>
+
+    // sort()는 문자열 기반의 메서드.
+    // 숫자 정렬을 하기 위해서는 아래와 같이 정렬 기준을 제시해야 한다.
+    var num = [6, 1, 8, 2, 55];
+    document.write("실행 전: " + num.join() + "<br />");
+    
+    // 오름차순
+    num.sort(function(a, b){
+      if(a > b) return 1;
+      if(a < b) return -1;
+    });
+    document.write("오름차순 실행 후: " + num.join()+ "<br />");
+
+    // 내림차순
+    num.sort(function(a, b){
+      if(a > b) return -1;
+      if(a < b) return 1;
+    });
+    document.write("내림차순 실행 후: " + num.join()+ "<br />");
+
+  </script>
+</head>
+<body>
+</body>
+</html>
