@@ -86,3 +86,17 @@ console.log(chain3, chain3.introduce());
 # 접근자 프로퍼티
 
 getter, setter
+
+
+
+
+#고차함수 메서드들
+
+forEach
+for문 대신 사용
+예외를 던지지 않으면 종료할 수 없음(break, continue 사용 불가)
+
+ 
+
+
+
