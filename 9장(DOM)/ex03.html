@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM-3(속성 변경)</title>
+</head>
+<style>
+  #container{width:600px;min-height:500px;margin:0 auto;border:2px solid #ccc;padding: 20px;}
+  #container::after{content:'';display: block;clear: both;}
+  #img_load, #desc{float: left;}
+  #img_load{margin:20px 20px auto 10px;}
+  #desc{padding-top: 20px;margin-bottom: 50px;}
+  #cup{width:300px;box-shadow: 1px 1px 2px #eee;outline:1px dashed #eee; outline-offset: -7px;}
+  #smallCup img{width:100px;height:100px;display: inline-block;}
+  .bright{color:blue;}
+  .blueTxt{color:blue;font-weight: bold;}
+</style>
+<body>
+  <div id="container">
+    <h1 id="heading">커피잔</h1>
+    <div id="img_load">
+      <img id="cup" src="../coffee01.jpg" alt="커피">
+      <div id="smallCup">
+        <img class="small" src="../coffee01.jpg" alt="커피">
+        <img class="small" src="../coffee02.jpg" alt="커피">
+        <img class="small" src="../coffee03.jpg" alt="커피">
+      </div>
+    </div>
+    <div id="desc">
+      <ul>
+        <li>커피잔</li>
+        <li class="blueTxt">판매가: 9,000원</li>
+        <li>배송비: 3,000원</li>
+        <li>적립금: 150원</li>
+        <li>제조일자: 2020.10.20</li>
+        <button>장바구니 담기</button>
+      </ul>
+      <a href="#" id="view">상세 설명 보기</a>
+    </div>
+  </div>
+</body>
+</html>
+<!--
+
+  document.getElementById("text_head").onclick = function(){this.style.fontSize = "5em";}
+  document.getElementsByClassName("bright")[1].style.textDecoration = "underline";
+  document.getElementsByTagName("h2")[0].style.textDecoration = "underline";
+-->
+<script>
+  var bigPic = document.querySelector("#cup");
+  var smallPic = document.querySelectorAll(".small");
+
+for (var i=0; i<smallPic.length; i++){
+  smallPic[i].addEventListener("click", changePic) // 작은 이미지 노드 리스트들을 클릭하면 이벤트 호출
+}
+function changePic(){
+  var newPic = this.src;
+  bigPic.setAttribute("src", newPic); //newPic의 값을 큰 이미지의 src속성에 대입됨.
+}
+</script>

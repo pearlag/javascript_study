@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM-2(요소 접근)</title>
+</head>
+<style>
+  #container{width:800px;min-height:500px;margin:0 auto;padding:20px 10px 0 50px;border:2px solid #ccc;}
+  #container::after{content:'';display: block;clear: both;}
+  #img_load, #desc{float: left;}
+  #desc{max-width: 600px;margin-left:20px;}
+  #img_load img{border:1px solid #ccc;}
+  .bright{color:blue;}
+</style>
+<body>
+  <div id="container">
+    <h1 id="text_head">지구</h1>
+    <div id="img_load"><img src="../earth.png" alt="지구"></div>
+    <div id="desc">
+      <h2 class="bright">Information</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit quam id veniam, accusamus eos velit dolores rerum, corporis quidem vel veritatis nihil earum exercitationem ea blanditiis modi impedit facilis itaque.</p>
+      <h2>note</h2>
+      <p class="bright">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel fugit, iusto fuga hic laudantium architecto molestiae ad beatae. Atque quos omnis illo optio quaerat nobis repellendus laudantium ex voluptatem beatae.</p>
+    </div>
+  </div>
+</body>
+</html>
+<!--
+
+  document.getElementById("text_head").onclick = function(){this.style.fontSize = "5em";}
+  document.getElementsByClassName("bright")[1].style.textDecoration = "underline";
+  document.getElementsByTagName("h2")[0].style.textDecoration = "underline";
+-->
