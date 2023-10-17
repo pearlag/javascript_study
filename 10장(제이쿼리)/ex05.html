@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트vs제이쿼리-4</title>
+  <style>
+    body{
+      font-size: 15px;
+      font-family: "굴림";
+    }
+    #panel{width:600px;height:300px;border:2px solid #000;position: relative;}
+    #earth{position: absolute;left:0;top:-50px;width:50px;}
+    #bar{position: absolute;left:50px;top:190px;width:500px;height:15px;background-color: #f30;}
+    #nav{text-align: center;width:600px;}
+  </style>
+  <script src="/libs/jquery-1.11.1.min.js"></script>
+  <script>
+    // 자바스크립트로 버튼 클릭시 지구 이미지가 움직이도록 효과 만들기
+
+    // window.onload = function(){
+    //   var earth = document.getElementById("earth");
+    //   var btnStart = document.getElementById("btnStart");
+
+    //   var left = 50;
+    //   var timerID = 0;
+
+    //   //버튼에 이벤트 등록
+    //   btnStart.addEventListener("click", function(){
+    //     //지구이미지가 움직이기
+    //     timerID = setInterval(function(){
+    //       left++;
+    //       earth.style.left = left + "px";
+
+    //       //500px 도달시 타이머 종료
+    //       if(left >= 450){
+    //         clearInterval(timerID);
+    //         timerID = 0;
+    //       }
+    //     }, 10);
+    //   });
+    // }
+
+    //제이쿼리
+    $(function(){
+      var $earth = $("#earth");
+      $("#btnStart").on("click", function(){
+        $earth.animate({
+          left : 450
+        },5000);
+      })
+    });
+  </script>
+</head>
+<body>
+  <div>
+    <div id="panel">
+      <div id="bar">
+        <img id="earth" src="../earth.png" alt="지구">
+      </div>
+    </div>
+    <div id="nav">
+      <button id="btnStart">버튼</button>
+    </div>
+  </div>
+</body>
+</html>

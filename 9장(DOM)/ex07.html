@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM-7(요소 추가하기)</title>
+</head>
+<style>
+
+</style>
+<body>
+  <div id="container">
+    <h1>참가신청</h1>
+    <form action="">
+      <input type="text" id="userName" placeholder="이름을 입력하세요" required />
+      <button onclick="newRegister();return false;">신청</button>
+    </form>
+    <hr />
+    <div id="nameList"></div>
+  </div>
+</body>
+</html>
+<script>
+function newRegister(){
+  var newP = document.createElement("p"); //새로운 p요소 만들기
+  var userName = document.querySelector("#userName");
+  var text = document.createTextNode(userName.value);// 새로운 텍스트 노드 만들기
+  newP.appendChild(text); //p요소에 text 연결
+
+  var nameList = document.querySelector("#nameList");
+  nameList.appendChild(newP) // nameList안에 P가 들어감
+  userName.value = ""; //텍스트 필드 지우기
+}
+</script>

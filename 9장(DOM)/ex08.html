@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM-7(요소 삭제하기)</title>
+</head>
+<style>
+  #container{width:500px;margin:0 auto;}
+.del{
+  font-size: 20px;
+  text-align: center;
+  color:blue;
+  background: transparent;
+  float: right;
+  margin-right: 10px;
+  cursor: pointer;
+}
+</style>
+<body>
+  <div id="container">
+    <h1>참가신청</h1>
+    <form action="">
+      <input type="text" id="userName" placeholder="이름을 입력하세요" required />
+      <button onclick="newRegister();return false;">신청</button>
+    </form>
+    <hr />
+    <div id="nameList"></div>
+  </div>
+</body>
+</html>
+<script>
+function newRegister(){
+  var newP = document.createElement("p"); //새로운 p요소 만들기
+  var userName = document.querySelector("#userName");
+  var newtext = document.createTextNode(userName.value);// 새로운 텍스트 노드 만들기
+  newP.appendChild(newtext); //p요소에 text 연결
+
+
+  var delBtn = document.createElement("span"); //새로운 버튼 추가
+  var delText = document.createTextNode("X") //새로운 텍스트 노드 추가
+  delBtn.setAttribute("class", "del"); //버튼에 class 선택자 속성 추가
+  delBtn.appendChild(delText); //텍스트 노드가 button 자식요소 연결
+  newP.appendChild(delBtn); // delBtn을 p요소의 하위요소로 만들기
+
+  var nameList = document.querySelector("#nameList");
+  nameList.insertBefore(newP, nameList.childNodes[0]); // p요소를 #nameList의 맨 앞에 추가
+  // nameList.appendChild(newP) // nameList안에 P가 들어감
+  userName.value = ""; //텍스트 필드 지우기
+
+  var removeBtns = document.querySelectorAll(".del");
+
+  //removeBtns 전체를 반복한다.
+  for(var i=0; i<removeBtns.length; i++){
+
+    //removeBtns 각각의 버튼에 이벤트를 등록.
+    removeBtns[i].addEventListener("click", function(){
+      //#nameList 찾기
+      if(this.parentNode.parentNode){
+        this.parentNode.parentNode.removeChild(this.parentNode); // p태그 삭제
+      }
+    });
+  }
+}
+</script>

@@ -15,6 +15,7 @@
   #smallCup img{width:100px;height:100px;display: inline-block;}
   .bright{color:blue;}
   .blueTxt{color:blue;font-weight: bold;}
+  #detail{display: none;}
 </style>
 <body>
   <div id="container">
@@ -38,6 +39,15 @@
       </ul>
       <a href="#" id="view">상세 설명 보기</a>
     </div>
+    <hr>
+    <div id="detail">
+      <h2>상품 상세 정보</h2>
+       <ul>
+        <li>원산지: 대구</li>
+        <li>지역: 대구 달서구</li>
+        <li>농장: 대구 A농장</li>
+       </ul>
+    </div>
   </div>
 </body>
 </html>
@@ -48,8 +58,10 @@
   document.getElementsByTagName("h2")[0].style.textDecoration = "underline";
 -->
 <script>
-  var bigPic = document.querySelector("#cup");
-  var smallPic = document.querySelectorAll(".small");
+var bigPic = document.querySelector("#cup");
+var smallPic = document.querySelectorAll(".small");
+
+var isOpen = false;
 
 for (var i=0; i<smallPic.length; i++){
   smallPic[i].addEventListener("click", changePic) // 작은 이미지 노드 리스트들을 클릭하면 이벤트 호출
@@ -58,4 +70,22 @@ function changePic(){
   var newPic = this.src;
   bigPic.setAttribute("src", newPic); //newPic의 값을 큰 이미지의 src속성에 대입됨.
 }
+
+var view = document.querySelector("#view");
+view.addEventListener("click", function(){
+  // 상세 정보가 감춰져 있으면
+  if(isOpen == false){
+    //상세 정보 보이기
+    document.querySelector("#detail").style.display="block";
+    view.innerHTML = "상세 설명 닫기";
+    isOpen = true;
+  }
+  else{
+    //상세 정보 감추기
+    document.querySelector("#detail").style.display="none";
+    view.innerHTML = "상세 설명 보기";
+    isOpen = false;
+  }
+
+});
 </script>

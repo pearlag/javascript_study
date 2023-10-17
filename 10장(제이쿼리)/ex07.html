@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제이쿼리 라이브러리 삽입 방법</title>
+  <!-- 1. CDN방식 jQuery 라이브러리 삽입 방법(인터넷이 되는 곳) -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <!-- 2. 파일을 다운로드 하는 방법(이 방법을 추천함) -->
+  <script src="/libs/jquery-1.11.1.min.js"></script>
+  <script>
+    $(function(){
+      var $h1 = $("h1");
+      $h1.css("color", "red");
+    });
+  </script>
+</head>
+<body>
+  <h1>라이브러리 사용 방법</h1>
+</body>
+</html>

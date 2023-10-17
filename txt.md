@@ -806,3 +806,83 @@ var result = 배열.sort([compareFunction]);
 숫자 정렬하기
 
 숫자도 문자열로 처리됨.
+
+
+# 9장_ DOM
+
+## 자바스크립트를 배운다는 것
+1. 자바스크립트 core 문법: 기본 문법, 구조, 데이터 타입, 조건문, 반복문, 함수, 클래스
+2. 자바스크립트 core라이브러리 : 자바스크립트에서 기본제공하는 타이머 함수, 문자열, 날짜 및 시간, 수학, 배열, 기타 전역함수
+3. 자바스크립트 DOM : 노드, 스타일, 속성, 이벤트, 위치 및 크기 등을 다룰 수 있는 다양한 기능
+4. 자바스크립트 BOM : 브라우저와 관련된 window, nav, loc, history, document, screen 객체들을 포함
+
+## DOM
+- 슬라이드 기능
+- 아코디언 메뉴, hover 기능
+- 서버에서 데이터를 받아 화면에 출력
+
+## 노드
+html 웹페이지 구성 요소의 가장 작은 단위
+태그 뿐 아니라 텍스트 및 주석까지
+
+### 핵심 DOM 객체
+- 노드 : 노드를 다루는 기본 기능 ,프로퍼티 제공.
+- document : 텍스트, 엘리먼트, 속성 노드를 생성
+- element : html, xml 태그 요소의 기본 기능과 프로퍼티 제공.
+- HTMLDocument  : document 객체를 확장하여 html용 프로퍼티, 메서드 추가한 객체. body가 바로 이 객체의 프로퍼티.
+- HTMLElement : element 객체를 상속받은 html 태그 요소 전용 
+
+## 노드 객체
+
+
+# 10장_jquery
+
+```<a href="api.jquery.com" target="_blank"></a>```
+즐겨찾기 해두고 jqeury의 기능 익히기.
+
+jquery는 DOM을 좀 더 쉽게 다룰 수 있게 만들어진 라이브러리 파일이다.
+이 라이브러리는 자바스크립트의 prototype이라는 클래스 제작 문법으로 만들어졌다.
+```$()```에서 jQuery의 인스턴스를 생성해준다. 
+
+같은 선택자를 여러 번 호출할 일이 생길 경우,
+변수로 정의해서 로직을 짠다.
+
+```js
+var $menu = $("#menu");
+$menu.append..
+$menu.append..
+$menu.css...
+```
+
+
+# 11장_노드 찾기
+
+## 노드 찾기
+```js
+
+$("#header") // 아이디로 찾기
+$(".header") // 클래스로 찾기
+$("h1") // 태그로 찾기
+$("h1[class]") // class 속성을 들고 있는 h1 노드 찾기
+$("input[type=text]") // text 타입의 input 노드 찾기
+$("input[title^=V]") // input의 title 속성 값이 V로 시작하는 노드 찾기
+$("input[title$=V]") // input의 title 속성 값이 V로 끝나는 노드 찾기
+$("input[title*=V]") // input의 title 속성 값이 V를 포함하는 노드 찾기
+
+```
+
+## 찾은 노드 다루기
+
+```js
+
+.length // 객체 내부에 들어있는 노드 개수 구하기
+.eq(index) // eq()메서드를 찾은 노드의 n번째 해당하는 노드 접근
+.get(index) // 리턴값은 자바스크립트 DOM객체이다.
+.each(function(index){// 대상에 들어있는 노드 개수만큼 매개변수 값으로 넘겨 받은 함수를 반복해서 호출한다.
+  var $target = $(this);
+  //또는
+  var $target = $대상.eq(index)
+});       
+
+
+```

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOMLoaded Event와 Window의 load이벤트의 차이점</title>
+  <script src="/libs/jquery-1.11.1.min.js"></script>
+  <script>
+    // ready함수는 외부이미지,컨텐츠 로딩이 안 되고 DOM 객체가 생성된 후 이벤트 발생.
+    $(function(){
+      console.log("width = " + $("#image").width());
+    });
+
+    // window.onload이벤트는 외부이미지,컨텐츠 로딩 된 후에 발생.
+    // window.onload = function(){
+    //   console.log("width = " + $("#image").width());
+    // };
+  </script>
+</head>
+<body>
+  <img id="image" src="../earth.png" alt="">
+</body>
+</html>
