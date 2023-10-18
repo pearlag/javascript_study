@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>노드 다루기-each()</title>
+  <script src="/libs/jquery-1.11.1.min.js"></script>
+  <script>
+    $(function(){
+
+      // 순차적으로 노드 접근, 인덱스와 HTML li Element 출력
+      // jQuery객체.textContent = value 출력
+      $(".container li").each(function(index, item){
+        document.write("index값: " + index + ", " + item.textContent + "<br />");
+
+      });
+    });
+  </script>
+</head>
+<body>
+  <ul class="container">
+    <li>냥냥냥</li>
+    <li>고양이</li>
+    <li>애기</li>
+    <li>강아지</li>
+    <li>토낑</li>
+  </ul>
+</body>
+</html>
