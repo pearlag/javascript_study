@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>노드 다루기 - each(), eq(), $(this)</title>
+  <style>
+    body{
+      font-size: 15px;
+      font-family: "굴림";
+    }
+    div, p, ul, li{
+      border:1px solid gray;
+      margin:10px;
+    }
+    ul{
+      padding:10px;
+    }
+    li.select{
+      background-color: #ccc;
+    }
+  </style>
+  <script src="/libs/jquery-1.11.1.min.js"></script>
+  <script>
+    // each() 
+    // for문처럼 요소들을 반복 수행한다. return false를 사용하여 반복 중지 가능.
+
+    $(function(){
+      // $("ul.menu li").each(function(index){
+      //   // this = 현재 jQuery 객체.
+      //   document.write(this + "<br />");
+      //   console.log(this); 
+      // });
+
+      // li객체들을 찾아서 배열로 리턴을 받는다.
+      var $liList = $("ul.menu li");
+
+      //liList에 있는 li객체들의 border속성을 루프를 돌면서 2배수로 두껍게 만드는 내용
+        $liList.each(function(index){
+          var borderPixel = (index + 1) * 2;
+          // $liList.eq(index).css("border", borderPixel + "px solid #f00");
+          $(this).css("border", borderPixel + "px solid #f00");
+      });
+    });
+  </script>
+</head>
+<body>
+  <div id="samplePage" class="page">
+    샘플페이지(div, id=samplePage, class=page)
+    <div id="header">
+      헤더 영역(div, id=header)
+    </div>
+    <div id="content" class="sample-content">
+      노드 찾기(div, id=content, class=sample-content)
+      <ul class="menu">
+        일반 노드 찾기(ul, class=menu)
+        <li date-value="1">id로 찾기(li, data-value=1)</li>
+        <li class="select">tag로 찾기(li, class=select)</li>
+        <li date-value="2">class로 찾기(li, data-value=2)</li>
+        <li class="test1">속성으로 찾기(li, class=test1)</li>
+      </ul>
+      <div class="content-data">
+        자식 노드 찾기(div, class=content-data)
+        <p class="test1">1. 모든 자식 노드 찾기(p, class=test1)</p>
+        <p>2. 특정 자식 노드만 찾기(p)</p>
+        <p class="test2">3. 마지막 자식 노드 찾기(p, class=test2)</p>
+      </div>
+    </div>
+    <div id="footer">
+      푸터 영역(div, id=footer)
+    </div>
+  </div>
+</body>
+</html>

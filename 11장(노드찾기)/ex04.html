@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>노드 다루기-eq()</title>
+  <style>
+    body{
+      cursor: pointer;
+    }
+    div{
+      width:50px;height:50px;float:left;background-color: brown;margin:10px;
+    }
+    span{color:#000;}
+  </style>
+  <script src="/libs/jquery-1.11.1.min.js"></script>
+  <script>
+    $(function(){
+      //div 5개 생성, 배열로 저장
+      var $divList = $("div");
+
+      //n번째의 div만 css 수정
+      var $div_one = $divList.get(0);      
+      var $div_two = $divList.eq(1); //배열을 다룰 때 추천하는 방법
+      var $div_three = $divList[2];
+
+      $div_one.style.border = "10px solid skyblue"; // get은 element를 리턴한다. 때문에 자바스크립트 형식으로 해결해야 한다.
+      $div_two.css("background", "blue"); // eq()는 div의 jQuery 객체가 넘어온다.
+      $div_three.style.border = "10px solid yellow" // eq()는 div의 jQuery 객체가 넘어온다.
+    });
+  </script>
+</head>
+<body>
+  <div>div1</div>
+  <div>div2</div>
+  <div>div3</div>
+  <div>div4</div>
+  <div>div5</div>
+  <span></span>
+</body>
+</html>

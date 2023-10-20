@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>노드 다루기-length</title>
+  <style>
+    body{
+      cursor: pointer;
+    }
+    div{
+      width:50px;height:50px;float:left;background-color: brown;margin:10px;
+    }
+    span{color:#000;}
+  </style>
+  <script src="/libs/jquery-1.11.1.min.js"></script>
+  <script>
+    $(function(){
+      $("body").click(function(){
+        $(this).append($("<div>"));
+          var length = $("div").length;
+          $("span").text("div태그의 개수:" + length);
+      });
+    });
+  </script>
+</head>
+<body>
+  <div></div>
+  <span></span>
+</body>
+</html>

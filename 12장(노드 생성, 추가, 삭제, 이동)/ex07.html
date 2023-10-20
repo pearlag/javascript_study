@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>노드 생성-jQuery 두 메서드의 차이-1 html(), text() </title>
+  <style>
+    body{
+      font-size: 15px;
+      font-family: '맑은 고딕';
+    }
+    ul, li{border:3px solid gray;margin:10px;}
+    ul{padding:10px;}
+    li.select{background-color: skyblue;}
+  </style>
+  <script src="/libs/jquery-3.5.1.min.js"></script>
+  <script>
+    $(function(){
+      $("#ok").click(function(){
+        //html()은 특정 노드들의 마크업 확인 가능.
+        // console.log($("#menu").html()); //리턴값으로 string 출력
+
+        //text()는 텍스트 노드의 내용만 출력
+        console.log($("#menu").text());
+      });
+
+    });
+  </script>
+</head>
+<body>
+  <button id="ok">확인</button>
+  <ul id="menu">
+    <li>메뉴1</li>
+    <li>메뉴2</li>
+    <li>메뉴3</li>
+    <li>메뉴4</li>
+    <li class="select">메뉴5</li>
+    <li>메뉴6</li>
+  </ul>
+</body>
+</html>
